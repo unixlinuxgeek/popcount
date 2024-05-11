@@ -15,7 +15,7 @@ func PopCount(x uint64) int {
 	var y byte
 
 	for v := 0; v < 8; v++ {
-		y += pc[byte(x>>(0*8))]
+		y += pc[byte(x>>(v*8))]
 	}
 
 	return int(y)
