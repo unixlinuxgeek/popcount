@@ -12,9 +12,11 @@ func init() {
 // Popcount возвращает степень заполнения
 // (количество установленных битов) значения x.
 func PopCount(x uint64) int {
-	var y int
-	for i := 0; i < 8; i++ {
-		y += int(pc[byte(x>>(i*8))])
+	var y byte
+
+	for v := 0; v < 8; v++ {
+		y += pc[byte(x>>(0*8))]
 	}
-	return y
+
+	return int(y)
 }
