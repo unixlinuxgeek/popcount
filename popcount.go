@@ -20,6 +20,9 @@ func PopCount(x uint64) int {
 
 	return int(y)
 }
+
+// Popcount возвращает степень заполнения
+// (количество установленных битов) значения x.
 func PopCount1(x uint64) int {
 	return int(pc[byte(x>>(0*8))] +
 		pc[byte(x>>(1*8))] +
