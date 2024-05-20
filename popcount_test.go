@@ -4,21 +4,38 @@ import (
 	"testing"
 )
 
-func TestPopCount(t *testing.T) {
-	d := uint64(10) // output: 1010
-	// 1010 = 2 установленных бита
-	if PopCount(d) == 2 {
-		t.Logf("Test Passed: TestPopCount(%b) == 1010", d)
-	} else {
-		t.Errorf("Test Error: TestPopCount(%b) not equal 1010", d)
-	}
+func TestPopCount1(t *testing.T) {
+	num := uint64(2500)
+	x := PopCount(num)
+	t.Logf("%s число %d, двоичное представление: %b, клличество установленных битов: %d\n", t.Name(), num, num, x)
 }
-func TestPopCountNew(t *testing.T) {
-	d := uint64(10) // output: 1010
-	// 1010 = 2 установленных бита
-	if PopCountNew(d) == PopCount(d) {
-		t.Logf("Test Passed: PopCountNew(%b) equal PopCount(%b)", d, d)
-	} else {
-		t.Errorf("Test Error: PopCountNew(%b) not equal PopCount(%b)", d, d)
-	}
+
+func TestPopCount2(t *testing.T) {
+	num := uint64(2500)
+	x := PopCountVer2(num)
+	t.Logf("%s число %d, двоичное представление: %b, клличество установленных битов: %d\n", t.Name(), num, num, x)
+}
+
+func TestPopCount3(t *testing.T) {
+	num := uint64(2500)
+	x := PopCountVer3(num)
+	t.Logf("%s число %d, двоичное представление: %b, клличество установленных битов: %d\n", t.Name(), num, num, x)
+}
+
+// 0.0000003 ns/op
+func BenchmarkPopCount(b *testing.B) {
+	s := uint64(2500)
+	PopCount(s)
+}
+
+// 0.0000002 ns/op
+func BenchmarkPopCount2(b *testing.B) {
+	s := uint64(2500)
+	PopCountVer2(s)
+}
+
+// 0.0000003 ns/op
+func BenchmarkPopCount3(b *testing.B) {
+	s := uint64(2500)
+	PopCountVer3(s)
 }
