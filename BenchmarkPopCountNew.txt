@@ -1,0 +1,7 @@
+goos: linux
+goarch: amd64
+pkg: github.com/unixlinuxgeek/popcount
+cpu: 12th Gen Intel(R) Core(TM) i5-12450H
+BenchmarkPopCountNew-12    	1000000000	         0.0000003 ns/op
+PASS
+ok  	github.com/unixlinuxgeek/popcount	0.004s
