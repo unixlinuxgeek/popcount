@@ -1,41 +1,43 @@
+// Упражнение 2.4
+// Напишите версию PopCount, которая подсчитывает биты с помощью сдвига аргумента по всем 64 позициям,
+// проверяя при каждом сдвиге крайний справа бит. Сравните производительность этой версии с выборкой из таблицы.
+
 package popcount
 
 import (
 	"testing"
 )
 
-func TestPopCount1(t *testing.T) {
-	num := uint64(2500)
-	x := PopCount(num)
-	t.Logf("%s число %d, двоичное представление: %b, клличество установленных битов: %d\n", t.Name(), num, num, x)
+func TestPopCountNew(t *testing.T) {
+	n := uint64(2050) // 100000000010 bit count is 2
+
+	if PopCountNew(n) == 2 { // bit count
+		t.Logf("%s Десятичное число %d, количество установленных битов: %d (%b)\n", t.Name(), n, PopCountNew(n), n)
+	} else {
+		t.Errorf("Error %b not equal %d", n, n)
+	}
 }
 
-func TestPopCount2(t *testing.T) {
-	num := uint64(2500)
-	x := PopCountVer2(num)
-	t.Logf("%s число %d, двоичное представление: %b, клличество установленных битов: %d\n", t.Name(), num, num, x)
+func TestPopCountOld(t *testing.T) {
+	n := uint64(2050) // 100000000010 bit count is 2
+
+	if PopCountOld(n) == 2 { // bit count
+		t.Logf("%s Десятичное число %d, количество установленных битов: %d (%b)\n", t.Name(), n, PopCountNew(n), n)
+	} else {
+		t.Errorf("Error %b not equal %d", n, n)
+	}
 }
 
-func TestPopCount3(t *testing.T) {
-	num := uint64(2500)
-	x := PopCountVer3(num)
-	t.Logf("%s число %d, двоичное представление: %b, клличество установленных битов: %d\n", t.Name(), num, num, x)
+func BenchmarkPopCountOld(t *testing.B) {
+	PopCountOld(25)
+	//for i := 0; i < t.N; i++ {
+	//	PopCountOld(25)
+	//}
 }
 
-// 0.0000003 ns/op
-func BenchmarkPopCount(b *testing.B) {
-	s := uint64(2500)
-	PopCount(s)
-}
-
-// 0.0000002 ns/op
-func BenchmarkPopCount2(b *testing.B) {
-	s := uint64(2500)
-	PopCountVer2(s)
-}
-
-// 0.0000003 ns/op
-func BenchmarkPopCount3(b *testing.B) {
-	s := uint64(2500)
-	PopCountVer3(s)
+func BenchmarkPopCountNew(t *testing.B) {
+	PopCountNew(25)
+	//for i := 0; i < t.N; i++ {
+	//	PopCountNew(25)
+	//}
 }
