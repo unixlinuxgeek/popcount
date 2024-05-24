@@ -21,6 +21,5 @@ func PopCount(x uint64) int {
 		c++
 		x = x & (x - 1)
 	}
-	//fmt.Printf("Десятичное число %d, количество установленных битов: %d (%b)\n", in, c, in)
 	return c
 }
