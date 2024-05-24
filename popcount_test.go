@@ -8,7 +8,7 @@ import (
 func TestPopCountNew1(t *testing.T) {
 	d := uint64(2050)
 	bitCnt := 2
-	cnt := PopCountNew(d)
+	cnt := PopCount(d)
 	if bitCnt == cnt {
 		t.Logf("%s: Десятичное число %d, количество установленных битов: %d (%b)\n", t.Name(), d, cnt, d)
 	} else {
@@ -20,7 +20,7 @@ func TestPopCountNew1(t *testing.T) {
 func TestPopCountNew2(t *testing.T) {
 	d := uint64(3)
 	bitCnt := 2
-	cnt := PopCountNew(d)
+	cnt := PopCount(d)
 	if bitCnt == cnt {
 		t.Logf("%s: Десятичное число %d, количество установленных битов: %d (%b)\n", t.Name(), d, cnt, d)
 	} else {
@@ -32,7 +32,7 @@ func TestPopCountNew2(t *testing.T) {
 func TestPopCountNew3(t *testing.T) {
 	d := uint64(55)
 	bitCnt := 5
-	cnt := PopCountNew(d)
+	cnt := PopCount(d)
 	if bitCnt == cnt {
 		t.Logf("%s: Десятичное число %d, количество установленных битов: %d (%b)\n", t.Name(), d, cnt, d)
 	} else {
