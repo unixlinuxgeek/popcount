@@ -4,8 +4,38 @@ import (
 	"testing"
 )
 
-func TestPopCount(t *testing.T) {
-	d := 2050
-	cnt := PopCountNew(2050)
-	t.Logf("Десятичное число %d, количество установленных битов: %d (%b)\n", d, cnt, d)
+// Десятичное число 2050, количество установленных битов: 2 (100000000010)
+func TestPopCountNew1(t *testing.T) {
+	d := uint64(2050)
+	bitCnt := 2
+	cnt := PopCountNew(d)
+	if bitCnt == cnt {
+		t.Logf("%s: Десятичное число %d, количество установленных битов: %d (%b)\n", t.Name(), d, cnt, d)
+	} else {
+		t.Errorf("Ошибка число %d не равно  %d", cnt, bitCnt)
+	}
+}
+
+// Десятичное число 3, количество установленных битов: 2 (11)
+func TestPopCountNew2(t *testing.T) {
+	d := uint64(3)
+	bitCnt := 2
+	cnt := PopCountNew(d)
+	if bitCnt == cnt {
+		t.Logf("%s: Десятичное число %d, количество установленных битов: %d (%b)\n", t.Name(), d, cnt, d)
+	} else {
+		t.Errorf("Ошибка число %d не равно  %d", cnt, bitCnt)
+	}
+}
+
+// Десятичное число 55, количество установленных битов: 5 (110111)
+func TestPopCountNew3(t *testing.T) {
+	d := uint64(55)
+	bitCnt := 5
+	cnt := PopCountNew(d)
+	if bitCnt == cnt {
+		t.Logf("%s: Десятичное число %d, количество установленных битов: %d (%b)\n", t.Name(), d, cnt, d)
+	} else {
+		t.Errorf("Ошибка число %d не равно  %d", cnt, bitCnt)
+	}
 }
